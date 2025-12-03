@@ -1,0 +1,14 @@
+/* Override CSS custom property */
+.fi-sidebar-nav-groups {
+    row-gap: calc(var(--spacing) * 2) !important; /* Ganti dari 7 ke 2 */
+}
+
+/* Atau langsung dengan nilai tetap */
+.fi-sidebar-nav-groups {
+    row-gap: 1rem !important; /* Langsung set nilai */
+}
+
+/* Atau lebih kecil lagi */
+.fi-sidebar-nav-groups {
+    row-gap: 0.5rem !important;
+}

@@ -1,0 +1,250 @@
+@import '@filament/theme.css';
+
+/* Custom overrides */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ 
+/* @config 'tailwind.config.js'; */
+
+/* ===== Custom SAKTA Theme ===== */
+:root {
+    --primary-50: rgb(240 253 250);
+    --primary-100: rgb(204 251 241);
+    --primary-200: rgb(153 246 228);
+    --primary-300: rgb(94 234 212);
+    --primary-400: rgb(45 212 191);
+    --primary-500: rgb(20 184 166);
+    --primary-600: rgb(13 148 136);
+    --primary-700: rgb(15 118 110);
+    --primary-800: rgb(17 94 89);
+    --primary-900: rgb(19 78 74);
+    --primary-950: rgb(4 47 46);
+}
+
+/* ===== Login Page Styling ===== */
+.fi-simple-page {
+    @apply bg-white;
+}
+
+/* Form input styling */
+.fi-input {
+    @apply border-gray-300 focus:border-primary-500 focus:ring-primary-500;
+}
+
+/* Button styling */
+.fi-btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 focus:ring-primary-500;
+}
+
+/* Checkbox styling */
+.fi-checkbox-input {
+    @apply text-primary-600 focus:ring-primary-500;
+}
+
+/* Link styling */
+.fi-link {
+    @apply text-primary-600 hover:text-primary-500;
+}
+
+/* ===== NAVIGATION STYLING ===== */
+
+/* Spacing between navigation groups */
+.fi-sidebar-nav-groups {
+    row-gap: 0.2rem !important;
+}
+
+/* Hide empty group labels (untuk single items yang dijadikan groups) */
+.fi-sidebar-group:not(:has(.fi-sidebar-group-label)) {
+    padding-top: 0;
+}
+
+.fi-sidebar-group-label:empty {
+    display: none !important;
+}
+
+.fi-sidebar-nav-groups > .fi-sidebar-group:first-child {
+    padding-top: 0 !important;
+}
+
+/* Smooth transitions */
+.fi-sidebar-item,
+.fi-sidebar-group-button {
+    transition: all 150ms ease-in-out !important;
+}
+
+/* ===== ACTIVE STATE (Item yang sedang dibuka) ===== */
+
+/* Active navigation item - semua kemungkinan selector */
+.fi-sidebar-item.fi-active,
+.fi-sidebar-item[aria-current="page"],
+.fi-sidebar-item-button.fi-active,
+.fi-sidebar-item-button[aria-current="page"],
+a.fi-sidebar-item.fi-active,
+a.fi-sidebar-item[aria-current="page"] {
+    background-color: var(--primary-500) !important;
+    color:  var(--primary-500) !important; /*rgb(255, 0, 0) !important;*/
+    font-weight: 600 !important;
+}
+
+/* Active item icon - putih */
+.fi-sidebar-item.fi-active svg,
+.fi-sidebar-item[aria-current="page"] svg,
+.fi-sidebar-item-button.fi-active svg,
+.fi-sidebar-item-button[aria-current="page"] svg {
+    color: var(--primary-500) !important; /* rgb(255, 0, 0) !important;*/
+}
+
+/* Dark mode - active state */
+.dark .fi-sidebar-item.fi-active,
+.dark .fi-sidebar-item[aria-current="page"],
+.dark .fi-sidebar-item-button.fi-active,
+.dark .fi-sidebar-item-button[aria-current="page"] {
+    background-color: var(--primary-500) !important;
+    color: rgb(255 255 255) !important;
+}
+
+/* ===== PARENT GROUP ACTIVE (Group yang punya child active) ===== */
+
+/* Group label - teal & bold ketika child active */
+.fi-sidebar-group:has(.fi-sidebar-item.fi-active) > .fi-sidebar-group-button,
+.fi-sidebar-group:has(.fi-sidebar-item[aria-current="page"]) > .fi-sidebar-group-button,
+.fi-sidebar-group:has([aria-current="page"]) > button,
+.fi-sidebar-group:has(.fi-active) > button {
+    color: var(--primary-500) !important;
+    font-weight: 600 !important;
+}
+
+/* Group icon - teal */
+.fi-sidebar-group:has(.fi-sidebar-item.fi-active) > .fi-sidebar-group-button svg,
+.fi-sidebar-group:has(.fi-sidebar-item[aria-current="page"]) > .fi-sidebar-group-button svg,
+.fi-sidebar-group:has([aria-current="page"]) > button svg,
+.fi-sidebar-group:has(.fi-active) > button svg {
+    color: var(--primary-500) !important;
+}
+
+/* ===== HOVER STATE (Non-active items) ===== */
+
+/* Light mode hover */
+.fi-sidebar-item:hover:not(.fi-active):not([aria-current="page"]),
+.fi-sidebar-item-button:hover:not(.fi-active):not([aria-current="page"]) {
+    background-color: rgb(241 245 249) !important; /* slate-100 */
+}
+
+.fi-sidebar-group-button:hover {
+    background-color: rgb(241 245 249) !important;
+}
+
+/* Dark mode hover */
+.dark .fi-sidebar-item:hover:not(.fi-active):not([aria-current="page"]),
+.dark .fi-sidebar-item-button:hover:not(.fi-active):not([aria-current="page"]) {
+    background-color: rgb(51 65 85) !important; /* slate-700 */
+}
+
+.dark .fi-sidebar-group-button:hover {
+    background-color: rgb(51 65 85) !important;
+}
+
+/* ===== INACTIVE STATE (Items yang tidak aktif) ===== */
+
+/* Light mode - inactive items */
+.fi-sidebar-item:not(.fi-active):not([aria-current="page"]) {
+    color: rgb(100 116 139) !important; /* slate-500 */
+}
+
+.fi-sidebar-item:not(.fi-active):not([aria-current="page"]) svg {
+    color: rgb(148 163 184) !important; /* slate-400 */
+}
+
+/* Light mode - inactive groups */
+.fi-sidebar-group-button:not(:has(+ * .fi-sidebar-item.fi-active)),
+.fi-sidebar-group-button:not(:has(+ * [aria-current="page"])) {
+    color: rgb(100 116 139) !important; /* slate-500 */
+}
+
+.fi-sidebar-group-button:not(:has(+ * .fi-sidebar-item.fi-active)) svg,
+.fi-sidebar-group-button:not(:has(+ * [aria-current="page"])) svg {
+    color: rgb(148 163 184) !important; /* slate-400 */
+}
+
+/* Dark mode - inactive items */
+.dark .fi-sidebar-item:not(.fi-active):not([aria-current="page"]) {
+    color: rgb(148 163 184) !important; /* slate-400 */
+}
+
+.dark .fi-sidebar-item:not(.fi-active):not([aria-current="page"]) svg {
+    color: rgb(100 116 139) !important; /* slate-500 */
+}
+
+/* Dark mode - inactive groups */
+.dark .fi-sidebar-group-button:not(:has(+ * .fi-sidebar-item.fi-active)),
+.dark .fi-sidebar-group-button:not(:has(+ * [aria-current="page"])) {
+    color: rgb(148 163 184) !important;
+}
+
+.dark .fi-sidebar-group-button:not(:has(+ * .fi-sidebar-item.fi-active)) svg,
+.dark .fi-sidebar-group-button:not(:has(+ * [aria-current="page"])) svg {
+    color: rgb(100 116 139) !important;
+}
+
+/* ===== CHILD ITEMS (Nested menu items) ===== */
+
+/* Child items indentation */
+.fi-sidebar-item-child {
+    padding-left: 2.5rem !important;
+}
+
+/* Child items bullet/dot indicator */
+.fi-sidebar-item-child::before {
+    content: '';
+    position: absolute;
+    left: 1.25rem;
+    width: 4px;
+    height: 4px;
+    border-radius: 9999px;
+    background-color: currentColor;
+    opacity: 0.5;
+}
+
+.fi-sidebar-item-child.fi-active::before,
+.fi-sidebar-item-child[aria-current="page"]::before {
+    opacity: 1;
+    background-color: white;
+}
+/* Hide wizard navigation buttons */
+.wizard-readonly .fi-fo-wizard-actions,
+.wizard-readonly [data-slot="actions"],
+.wizard-readonly button[type="button"][wire\:click*="nextStep"],
+.wizard-readonly button[type="button"][wire\:click*="previousStep"] {
+    display: none !important;
+}
+
+/* Hide wizard step content panels */
+.wizard-readonly .fi-sc-wizard-step[role="tabpanel"] {
+    display: none !important;
+}
+
+/* Hide wizard footer completely */
+.wizard-status-only .fi-sc-wizard-footer {
+    display: none !important;
+}
+
+/* Hide wizard navigation buttons and content */
+.wizard-status-only .fi-fo-wizard-actions,
+.wizard-status-only [data-slot="actions"],
+.wizard-status-only .fi-sc-wizard-step[role="tabpanel"] {
+    display: none !important;
+}
+
+/* Make wizard steps non-clickable */
+.wizard-status-only .fi-fo-wizard-header button {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+/* Optional: Make wizard steps non-clickable */
+.wizard-readonly .fi-fo-wizard-header button {
+    pointer-events: none;
+    cursor: default;
+}

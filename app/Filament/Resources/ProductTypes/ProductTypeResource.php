@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Filament\Resources\ProductTypes;
+
+use App\Filament\Resources\ProductTypes\Pages\CreateProductType;
+use App\Filament\Resources\ProductTypes\Pages\EditProductType;
+use App\Filament\Resources\ProductTypes\Pages\ListProductTypes;
+use App\Filament\Resources\ProductTypes\Schemas\ProductTypeForm;
+use App\Filament\Resources\ProductTypes\Tables\ProductTypesTable;
+use App\Filament\Clusters\Settings\SettingsCluster as ClustersSettings;
+use App\Models\ProductType;
+use BackedEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
+
+class ProductTypeResource extends Resource
+{
+    protected static ?string $model = ProductType::class;
+    protected static ?string $cluster = ClustersSettings::class;
+    const Label = 'Jenis Produk';
+    
+    protected static ?string $pluralModelLabel = self::Label;
+    protected static ?string $navigationLabel = self::Label; 
+    protected static ?int $navigationSort = 20;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static ?string $recordTitleAttribute = 'name';
+
+    public static function form(Schema $schema): Schema
+    {
+        return ProductTypeForm::configure($schema);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return ProductTypesTable::configure($table);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListProductTypes::route('/'),
+            // 'create' => CreateProductType::route('/create'),
+            // 'edit' => EditProductType::route('/{record}/edit'),
+        ];
+    }
+}

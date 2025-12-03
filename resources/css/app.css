@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles untuk SAKTA */
+.fi-simple-main {
+    background-color: #f9fafb; 
+}
+
+/* Styling untuk form inputs */
+.fi-input {
+    @apply transition-all duration-200;
+}
+
+.fi-input:focus {
+    outline: none; /* biar ring rapi */
+    border-color: #14b8a6; /* sama dengan border-teal-500 */
+    box-shadow: 0 0 0 2px #14b8a6; /* sama dengan ring-2 ring-teal-500 */
+  }
+
+/* Custom button styling */
+.fi-btn-primary {
+    background-color: #14b8a6; 
+    transition: background-color 0.2s ease;
+}
+
+/* Logo styling */
+.sakta-logo {
+    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
