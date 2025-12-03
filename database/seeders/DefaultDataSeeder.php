@@ -20,8 +20,9 @@ class DefaultDataSeeder extends Seeder
             'email' => 'admin@sakta.com',
         ], [
             'name' => 'Super Admin',
+            "username" => 'SuperAdmin',
             'password' => Hash::make('password'),
-            'role_id' => $superAdminRole->id,
+            'role_id' => 1,
             'is_active' => true,
         ]);
 

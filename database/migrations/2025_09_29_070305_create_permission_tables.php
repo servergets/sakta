@@ -24,10 +24,11 @@ return new class extends Migration
             // $table->engine('InnoDB');
             $table->bigIncrements('id'); // permission id
             $table->string('name');       // For MyISAM use string('name', 225); // (or 166 for InnoDB with Redundant/Compact row format)
-            $table->string('guard_name'); // For MyISAM use string('guard_name', 25);
+            $table->string('guard_name')->nullable(); // For MyISAM use string('guard_name', 25);
             $table->timestamps();
-
+            $table->string('display_name')->nullable();
             $table->unique(['name', 'guard_name']);
+            $table->string('module')->nullable();
         });
 
         Schema::create($tableNames['roles'], static function (Blueprint $table) use ($teams, $columnNames) {
@@ -38,13 +39,16 @@ return new class extends Migration
                 $table->index($columnNames['team_foreign_key'], 'roles_team_foreign_key_index');
             }
             $table->string('name');       // For MyISAM use string('name', 225); // (or 166 for InnoDB with Redundant/Compact row format)
-            $table->string('guard_name'); // For MyISAM use string('guard_name', 25);
+            $table->string('guard_name')->nullable(); // For MyISAM use string('guard_name', 25);
             $table->timestamps();
             if ($teams || config('permission.testing')) {
                 $table->unique([$columnNames['team_foreign_key'], 'name', 'guard_name']);
             } else {
                 $table->unique(['name', 'guard_name']);
             }
+            $table->string('display_name')->nullable();
+            $table->text('description')->nullable();
+            $table->boolean('is_active')->nullable();
         });
 
         Schema::create($tableNames['model_has_permissions'], static function (Blueprint $table) use ($tableNames, $columnNames, $pivotPermission, $teams) {
