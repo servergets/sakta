@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clients', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->nullable();
-            $table->string('phone')->nullable();
-            $table->text('address')->nullable();
-            $table->string('pic_name')->nullable(); // Person in Charge
-            $table->string('pic_phone')->nullable();
-            $table->boolean('is_active')->default(true);
-            $table->string('image');
-            $table->timestamps();
-        });
+        // Schema::create('clients', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('name');
+        //     $table->string('email')->nullable();
+        //     $table->string('phone')->nullable();
+        //     $table->text('address')->nullable();
+        //     $table->string('pic_name')->nullable(); // Person in Charge
+        //     $table->string('pic_phone')->nullable();
+        //     $table->boolean('is_active')->default(true);
+        //     $table->string('image');
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clients');
+        // Schema::dropIfExists('clients');
     }
 };
