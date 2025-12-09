@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::create('permissions', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->string('name')->unique();
-        //     $table->string('guard_name');
-        //     $table->timestamps();
-        // });
+        Schema::create('permissions', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
+            $table->string('guard_name')->nullable();
+            $table->string('display_name')->nullable();
+            $table->string('module')->nullable();
+            $table->text('description')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Schema::dropIfExists('permissions');
+        Schema::dropIfExists('permissions');
     }
 };

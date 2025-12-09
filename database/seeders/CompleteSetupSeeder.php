@@ -109,7 +109,7 @@ class CompleteSetupSeeder extends Seeder
         ];
 
         foreach ($permissions as $permission) {
-            Permission::firstOrCreate(['name' => $permission]);
+            Permission::create(['name' => $permission]);
         }
 
         $this->command->info('✅ Created ' . count($permissions) . ' permissions');
@@ -120,12 +120,12 @@ class CompleteSetupSeeder extends Seeder
         $this->command->info('👥 Assigning Permissions to Roles...');
 
         // Super Admin - ALL permissions
-        $superAdmin = Role::firstOrCreate(['name' => 'super_admin']);
+        $superAdmin = Role::create(['name' => 'super_admin']);
         $superAdmin->syncPermissions(Permission::all());
         $this->command->info('✅ Super Admin: ' . Permission::count() . ' permissions');
 
         // Admin - Most permissions
-        $admin = Role::firstOrCreate(['name' => 'admin']);
+        $admin = Role::create(['name' => 'admin']);
         $admin->syncPermissions([
             'view_dashboard',
             'view_projects', 'create_projects', 'edit_projects', 'delete_projects',
@@ -144,7 +144,7 @@ class CompleteSetupSeeder extends Seeder
         $this->command->info('✅ Admin: ' . $admin->permissions->count() . ' permissions');
 
         // Manager
-        $manager = Role::firstOrCreate(['name' => 'manager']);
+        $manager = Role::create(['name' => 'manager']);
         $manager->syncPermissions([
             'view_dashboard',
             'view_projects', 'edit_projects',
@@ -157,7 +157,7 @@ class CompleteSetupSeeder extends Seeder
         $this->command->info('✅ Manager: ' . $manager->permissions->count() . ' permissions');
 
         // Staff
-        $staff = Role::firstOrCreate(['name' => 'staff']);
+        $staff = Role::create(['name' => 'staff']);
         $staff->syncPermissions([
             'view_dashboard',
             'view_projects',
@@ -170,7 +170,7 @@ class CompleteSetupSeeder extends Seeder
         $this->command->info('✅ Staff: ' . $staff->permissions->count() . ' permissions');
 
         // Sales
-        $sales = Role::firstOrCreate(['name' => 'sales']);
+        $sales = Role::create(['name' => 'sales']);
         $sales->syncPermissions([
             'view_dashboard',
             'view_buyers', 'create_buyers', 'edit_buyers',
@@ -182,7 +182,7 @@ class CompleteSetupSeeder extends Seeder
         $this->command->info('✅ Sales: ' . $sales->permissions->count() . ' permissions');
 
         // Viewer
-        $viewer = Role::firstOrCreate(['name' => 'viewer']);
+        $viewer = Role::create(['name' => 'viewer']);
         $viewer->syncPermissions([
             'view_dashboard',
             'view_projects',

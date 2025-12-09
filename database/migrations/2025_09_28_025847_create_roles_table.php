@@ -11,12 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::create('roles', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->string('name')->unique();
-        //     $table->string('guard_name');
-        //     $table->timestamps();
-        // });
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
+            $table->string('guard_name')->nullable();
+            $table->string('team_foreign_key')->nullable();
+            $table->string('display_name')->nullable();
+            $table->text('description')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->timestamps();
+        });
+        
     }
 
     /**
@@ -24,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Schema::dropIfExists('roles');
+        Schema::dropIfExists('roles');
     }
 };

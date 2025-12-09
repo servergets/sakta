@@ -11,7 +11,7 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         // Create Super Admin Role
-        $superAdmin = Role::firstOrCreate([
+        $superAdmin = Role::create([
             'name' => 'super_admin',
             'display_name' => 'Super Admin',
             'description' => 'Full access to all modules and features',
@@ -23,7 +23,7 @@ class RoleSeeder extends Seeder
         $superAdmin->permissions()->sync($allPermissions->pluck('id'));
 
         // Create Manager Role
-        $manager = Role::firstOrCreate([
+        $manager = Role::create([
             'name' => 'manager',
             'display_name' => 'Manager',
             'description' => 'Access to most modules except user and role management',
@@ -34,7 +34,7 @@ class RoleSeeder extends Seeder
         $manager->permissions()->sync($managerPermissions->pluck('id'));
 
         // Create Staff Role
-        $staff = Role::firstOrCreate([
+        $staff = Role::create([
             'name' => 'staff',
             'display_name' => 'Staff',
             'description' => 'Limited access to daily operations',
@@ -53,7 +53,7 @@ class RoleSeeder extends Seeder
         $staff->permissions()->sync($staffPermissions->pluck('id'));
 
         // Create Accountant Role
-        $accountant = Role::firstOrCreate([
+        $accountant = Role::create([
             'name' => 'accountant',
             'display_name' => 'Accountant',
             'description' => 'Access to financial modules and reports',

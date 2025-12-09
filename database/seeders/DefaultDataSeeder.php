@@ -16,9 +16,8 @@ class DefaultDataSeeder extends Seeder
     {
         // Create Super Admin User
         $superAdminRole = Role::where('name', 'super_admin')->first();
-        User::firstOrCreate([
+        User::create([
             'email' => 'admin@sakta.com',
-        ], [
             'name' => 'Super Admin',
             'password' => Hash::make('password'),
             'role_id' => $superAdminRole->id,
@@ -34,7 +33,7 @@ class DefaultDataSeeder extends Seeder
         ];
 
         foreach ($paymentMethods as $method) {
-            PaymentMethod::firstOrCreate(['code' => $method['code']], $method);
+            PaymentMethod::create(['code' => $method['code']], $method);
         }
 
         // Create Default Product Types
@@ -46,7 +45,7 @@ class DefaultDataSeeder extends Seeder
         ];
 
         foreach ($productTypes as $type) {
-            ProductType::firstOrCreate(['code' => $type['code']], $type);
+            ProductType::create(['code' => $type['code']], $type);
         }
 
         // Create Default Product Units
@@ -61,7 +60,7 @@ class DefaultDataSeeder extends Seeder
         ];
 
         foreach ($productUnits as $unit) {
-            ProductUnit::firstOrCreate(['symbol' => $unit['symbol']], $unit);
+            ProductUnit::create(['symbol' => $unit['symbol']], $unit);
         }
     }
 }

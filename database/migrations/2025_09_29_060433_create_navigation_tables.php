@@ -51,6 +51,8 @@ return new class extends Migration
             $table->boolean('is_visible')->default(true);
             $table->string('badge')->nullable();
             $table->string('badge_color')->nullable();
+            $table->boolean('visible')->default(false);
+            $table->text('roles')->nullable();
             
             // 👇 Single permissions check (Spatie) - MAIN METHOD
             $table->string('permissions')->nullable();
