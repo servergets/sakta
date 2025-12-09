@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->string('invoice_number')->unique();
-            $table->foreignId('buyer_id')->constrained()->onDelete('cascade');
-            $table->foreignId('project_id')->nullable()->constrained()->onDelete('set null');
+            // $table->foreignId('buyer_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('project_id')->nullable()->constrained()->onDelete('set null');
+            $table->unsignedInteger('buyer_id'); //->constrained()->onDelete('cascade');
+            $table->unsignedInteger('project_id')->nullable(); //->constrained()->onDelete('set null');
             $table->date('sale_date');
             $table->decimal('subtotal', 15, 2);
             $table->decimal('tax_amount', 15, 2)->default(0);

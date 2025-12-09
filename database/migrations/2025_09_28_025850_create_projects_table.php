@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->text('project_photo')->nullable();
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->unsignedInteger('product_id');
             $table->integer('qty');
             $table->decimal('price', 15, 2);
             $table->foreignId('brand_id')->constrained()->onDelete('cascade');
